@@ -1,10 +1,14 @@
 # Real-Time Credit Card Fraud Detection API
 
+
+
 ## Project Overview
 
 The Real-Time Credit Card Fraud Detection API is a machine learning-based application designed to identify potentially fraudulent credit card transactions by analyzing transaction features and predicting whether a transaction is legitimate or suspicious. The project integrates machine learning, backend API development, an interactive dashboard, and basic monitoring to demonstrate an end-to-end machine learning workflow.
 
 The system uses Python and Scikit-learn to train classification models on historical credit card transaction data. The trained model is integrated with a FastAPI backend that receives transaction requests, validates input data, and returns predictions through REST API endpoints. A Streamlit dashboard provides an interactive interface for submitting transaction features, viewing prediction results, and monitoring available system metrics.
+
+
 
 ## Technologies Used
 
@@ -21,11 +25,16 @@ The system uses Python and Scikit-learn to train classification models on histor
 - **Docker:** Containerization and deployment support.
 - **Git and GitHub:** Version control and source code management.
 
+
+
 ## Dataset and Preprocessing
 
 The project uses a credit card transaction dataset stored in `data/creditcard.csv`. The dataset contains historical transaction records with numerical features and a target label identifying fraudulent and legitimate transactions.
 
 Data preprocessing includes inspecting missing values, handling duplicate records where appropriate, separating input features from the target variable, and preparing data for model training. Since fraudulent transactions are relatively rare, the project accounts for class imbalance and uses suitable evaluation metrics rather than relying only on accuracy.
+
+
+
 
 ## Machine Learning Model Development
 
@@ -34,6 +43,8 @@ The `train.py` script manages the training workflow, including loading data, pre
 Models such as Logistic Regression and Random Forest can be compared using precision, recall, F1-score, confusion matrix, and Precision-Recall AUC. The classification threshold can be tuned to balance fraud detection and false-positive rates.
 
 The trained model is saved as `models/fraud_model.joblib`, while evaluation results are stored in `models/evaluation_metrics.json`. The backend loads the saved model to generate predictions without retraining it each time the application starts.
+
+
 
 ## FastAPI Backend
 
@@ -45,11 +56,15 @@ The backend is developed using FastAPI and organized into separate modules:
 
 The API provides endpoints for application information, health checks, monitoring metrics, individual transaction predictions, and batch predictions. When a request is received, the backend validates the input, processes the transaction using the trained model, and returns the prediction in JSON format.
 
+
+
 ## Streamlit Dashboard
 
 The Streamlit dashboard, implemented in `streamlit_app.py`, provides a user-friendly interface for interacting with the fraud detection system. Users can enter transaction features, submit prediction requests, and view whether the model classifies a transaction as potentially fraudulent or legitimate.
 
 The dashboard can display prediction results, summary metrics, recent predictions, interactive charts, and available API health information. HTTPX connects the dashboard to the FastAPI backend, while Plotly provides interactive visualizations.
+
+
 
 ## Monitoring and Testing
 
@@ -57,7 +72,11 @@ The project includes basic API monitoring for request counts, prediction counts,
 
 The `tests/test_api.py` module contains automated API tests. Docker configuration files provide a foundation for containerized execution. These features should be tested to confirm that they work correctly in the target environment.
 
+
+
 ## How to Run the Backend and Dashboard
+
+
 
 ### Step 1: Open the project directory
 
@@ -66,6 +85,8 @@ Open Visual Studio Code and select the project folder:
 `REAL_TIME_FRAUD_DETECTION_API`
 
 Open a PowerShell terminal in this directory.
+
+
 
 ### Step 2: Install dependencies
 
@@ -82,6 +103,8 @@ If the trained model does not exist, verify that `data/creditcard.csv` is presen
 ```
 
 Wait for training to finish successfully.
+
+
 
 ### Step 3: Start the FastAPI backend
 
@@ -101,6 +124,8 @@ The backend will be available at:
 
 The API documentation can be used to inspect endpoints and test transaction prediction requests.
 
+
+
 ### Step 4: Start the Streamlit dashboard
 
 Open a **second PowerShell terminal** in the same project directory. Run:
@@ -113,6 +138,8 @@ Streamlit will display a local URL in the terminal. Open the displayed address, 
 
 `http://localhost:8501`
 
+
+
 ### Step 5: Test the application
 
 1. Confirm that the FastAPI backend is running on port `8000`.
@@ -123,11 +150,15 @@ Streamlit will display a local URL in the terminal. Open the displayed address, 
 
 The dashboard depends on the backend being available. If predictions fail, verify that the API is running, the model artifact exists, the required features are supplied, and the dashboard is configured to call the correct API URL.
 
+
+
 ## Expected Outcomes
 
 The intended outcome is an integrated machine learning application that accepts transaction features, predicts potential fraud, exposes prediction services through REST endpoints, and presents results in an interactive dashboard. It demonstrates practical skills in data preprocessing, model development, API integration, data visualization, testing, and deployment concepts.
 
 Actual prediction quality depends on the trained model and its evaluation results. The system's predictions are risk indicators and should not be treated as guaranteed fraud determinations.
+
+
 
 ## Conclusion
 
