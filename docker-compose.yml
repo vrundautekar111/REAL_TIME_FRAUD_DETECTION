@@ -1,0 +1,31 @@
+
+services:
+  api:
+    build: .
+    container_name: fraud-detection-api
+    command: >
+      uvicorn app.main:app
+      --host 0.0.0.0
+      --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models:ro
+    restart: unless-stopped
+
+  dashboard:
+    build: .
+    container_name: fraud-detection-dashboard
+    command: >
+      streamlit run streamlit_app.py
+      --server.address 0.0.0.0
+      --server.port 8501
+    ports:
+      - "8501:8501"
+    environment:
+      API_URL: http://api:8000
+    volumes:
+      - ./models:/app/models:ro
+    depends_on:
+      - api
+    restart: unless-stopped
