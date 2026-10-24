@@ -1,7 +1,6 @@
 # Real-Time Credit Card Fraud Detection API
 
 
-
 ## Project Overview
 
 The Real-Time Credit Card Fraud Detection API is a machine learning-based application designed to identify potentially fraudulent credit card transactions by analyzing transaction features and predicting whether a transaction is legitimate or suspicious. The project integrates machine learning, backend API development, an interactive dashboard, and basic monitoring to demonstrate an end-to-end machine learning workflow.
